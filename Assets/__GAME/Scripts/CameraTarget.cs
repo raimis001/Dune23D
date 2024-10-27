@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class CameraTarget : MonoBehaviour
 {
@@ -51,19 +52,19 @@ public class CameraTarget : MonoBehaviour
         if (moveAction.IsPressed())
         {
             Vector2 keyboard = moveAction.ReadValue<Vector2>();
-            Vector3 move = new Vector3(keyboard.x, 0, keyboard.y);
+            Vector3 move = new Vector3(keyboard.x, 0, keyboard.y) * Time.deltaTime * speed;
 
-            transform.Translate(move * Time.deltaTime * speed);
+            transform.Translate(move);
         }
 
         if (isPanning)
         {
             Vector3 mousePosition = Mouse.current.position.ReadValue();
-            Vector3 delta = mousePosition - lastMousePosition;  
+            Vector3 delta = (mousePosition - lastMousePosition) * Time.deltaTime * panSpeed;
 
-            transform.Translate(-delta.x * panSpeed * Time.deltaTime,0,  -delta.y * panSpeed * Time.deltaTime);
+            transform.Translate(-delta.x, 0, -delta.y);
 
-            lastMousePosition = mousePosition;  
+            lastMousePosition = mousePosition;
         }
 
     }

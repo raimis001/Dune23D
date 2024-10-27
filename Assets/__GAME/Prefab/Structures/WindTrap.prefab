@@ -5602,7 +5602,7 @@ GameObject:
   - component: {fileID: 4657331013264673018}
   - component: {fileID: 4098908659610840052}
   m_Layer: 0
-  m_Name: WindGenerator
+  m_Name: WindTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5653,7 +5653,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   race: 0
-  size: {x: 2, y: 2}
+  kind: 3
+  normal: {fileID: 3412788335263432481}
+  wrong: {fileID: 0}
 --- !u!1 &3173681864372093335
 GameObject:
   m_ObjectHideFlags: 0

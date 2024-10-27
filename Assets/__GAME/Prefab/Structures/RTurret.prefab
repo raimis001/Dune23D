@@ -208,7 +208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   race: 1
-  size: {x: 1, y: 1}
+  kind: 6
+  normal: {fileID: 2935465723797613181}
+  wrong: {fileID: 0}
   turret: {fileID: 4897453536308848319}
   barels:
   - {fileID: 8438655028573801678}

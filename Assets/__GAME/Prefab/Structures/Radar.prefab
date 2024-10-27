@@ -12184,7 +12184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   race: 0
-  size: {x: 1, y: 1}
+  kind: 8
+  normal: {fileID: 7275278289700521785}
+  wrong: {fileID: 0}
   dish: {fileID: 6837586069990187769}
   dishSpeed: 10
 --- !u!1001 &443329899111865119

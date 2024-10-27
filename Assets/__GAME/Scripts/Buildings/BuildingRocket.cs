@@ -1,10 +1,4 @@
 ﻿using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-using System.Collections;
-using UnityEngine.PlayerLoop;
-
-
-
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -38,8 +32,10 @@ public class BuildingRocket : Building
     float shotDelay1 = 0;
     float shotDelay2 = 0;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         rocket[0].race = race;
         rocket[1].race = race;
     }

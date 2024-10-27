@@ -18,7 +18,7 @@ public class Pool : MonoBehaviour
             prefabs.Add(child.gameObject.name, child.gameObject);
             pool.Add(child.gameObject);
             child.gameObject.SetActive(false);
-            Debug.Log(child.gameObject.name);
+            //Debug.Log(child.gameObject.name);
         }
     }
 

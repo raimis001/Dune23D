@@ -8,8 +8,8 @@ public enum RacesKind
 public class Proc : MonoBehaviour
 {
     public RacesKind race;
+    [Space]
 
-    [SerializeField]
     protected Vector2 size = Vector2.one;
 
     public Vector3 center => transform.position + new Vector3(0.5f * size.x, 0, 0.5f * size.y);
