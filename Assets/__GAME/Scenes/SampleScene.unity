@@ -30191,6 +30191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1092957823}
+  - component: {fileID: 1092957827}
   - component: {fileID: 1092957824}
   - component: {fileID: 1092957825}
   - component: {fileID: 1092957826}
@@ -30265,9 +30266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a1009f8fbaa784f8cc82e78465f588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
   buildGrid: {fileID: 1906862646}
   constructionsList:
   - name: Slab
@@ -30318,6 +30316,21 @@ MonoBehaviour:
     prefab: {fileID: 1309290336962819098, guid: b79d6182ba3f79944b33e2fef8bb5b83, type: 3}
     size: {x: 2, y: 2}
     buildTime: 60
+--- !u!114 &1092957827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092957822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533d48e188b6e6242801097bac266b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!43 &1094392960
 Mesh:
   m_ObjectHideFlags: 0
@@ -39639,7 +39652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  panSpeed: 3
+  panSpeed: 50
   moveAction:
     m_Name: Move
     m_Type: 0

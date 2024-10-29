@@ -32,7 +32,7 @@ public class CameraTarget : MonoBehaviour
     private void OnMouseReleased(InputAction.CallbackContext context)
     {
         //Debug.Log("Mouse release");
-        isPanning = false;
+        //isPanning = false;
     }
 
     private void OnMouseHeld(InputAction.CallbackContext context)
@@ -43,8 +43,8 @@ public class CameraTarget : MonoBehaviour
     private void OnMousePressed(InputAction.CallbackContext context)
     {
         //Debug.Log("Mouse press");
-        isPanning = true;
-        lastMousePosition = Mouse.current.position.ReadValue();
+        //isPanning = Device.MouseWorld(out lastMousePosition);
+
     }
 
     private void Update()
@@ -57,14 +57,32 @@ public class CameraTarget : MonoBehaviour
             transform.Translate(move);
         }
 
+        if (Device.MouseLeftDown)
+        {
+            isPanning = Device.MouseWorld(out lastMousePosition);
+            return;
+        }
+
+        if (Device.MouseLeftUp)
+        {
+            isPanning = false;
+            return;
+        }
+
         if (isPanning)
         {
-            Vector3 mousePosition = Mouse.current.position.ReadValue();
-            Vector3 delta = (mousePosition - lastMousePosition) * Time.deltaTime * panSpeed;
+            if (!Device.MouseWorld(out Vector3 mousePosition))
+            {
+                isPanning = false;
+                return;
+            }
 
-            transform.Translate(-delta.x, 0, -delta.y);
+            Vector3 delta = (lastMousePosition - mousePosition) ;
+            delta.y = 0;
 
-            lastMousePosition = mousePosition;
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + delta, Time.deltaTime * panSpeed);
+
+            //lastMousePosition = mousePosition;
         }
 
     }

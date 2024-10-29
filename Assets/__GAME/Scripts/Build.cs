@@ -39,8 +39,6 @@ public class Build : MonoBehaviour
     static Dictionary<Vector3Int, BuildKind> buildingCells = new Dictionary<Vector3Int, BuildKind>();
 
     [SerializeField]
-    LayerMask groundLayer;
-    [SerializeField]
     Tilemap buildGrid;
     [SerializeField]
     List<ConstructionData> constructionsList;
@@ -58,10 +56,10 @@ public class Build : MonoBehaviour
     {
         if (mode != BuildMode.Place)
             return;
-        if (UI.OwerUI())
+        if (Device.OwerUI)
             return;
 
-        if (Mouse.current.rightButton.wasPressedThisFrame)
+        if (Device.MouseRightDown)
         {
             if (placeConstruction)
                 Destroy(placeConstruction.gameObject);
@@ -72,18 +70,15 @@ public class Build : MonoBehaviour
             return;
         }
 
+        if (!Device.MouseWorld(out Vector3 pos))
+            return;
 
-        Vector3 mousePosition = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        placeConstruction.position = CellPosition(pos);
 
-        Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer);
+        bool tileIsEmpty = TileIsEmpty(pos);
+        placeConstruction.GetComponent<Building>().SetPlaceType(tileIsEmpty);
 
-        placeConstruction.position = CellPosition(hit.point);
-
-        bool tileIsBussy = BussyTile(hit.point);
-        placeConstruction.GetComponent<Building>().SetPlaceType(tileIsBussy);
-
-        if (!Mouse.current.leftButton.wasPressedThisFrame || !tileIsBussy)
+        if (!Device.MouseLeftDown || !tileIsEmpty)
             return;
 
         if (placeConstruction)
@@ -147,16 +142,28 @@ public class Build : MonoBehaviour
         return instance.buildGrid.CellToWorld(cell);
     }
 
-    public static bool BussyTile(Vector3Int cell)
+    public static bool TileIsEmpty(Vector3Int cell)
     {
-        if (!instance.buildGrid.HasTile(cell))
-            return false;
 
-        return !buildingCells.ContainsKey(cell);
+        ConstructionData data = construction(kind);
+
+        for (int x = 0; x < data.size.x; x++)
+            for (int y = 0;y < data.size.y; y++)
+            {
+                Vector3Int c = new Vector3Int(cell.x + x, cell.y + y);
+                if (!instance.buildGrid.HasTile(c))
+                    return false;
+
+                if (buildingCells.ContainsKey(c))
+                    return false;
+            }
+
+
+        return true;
     }
-    public static bool BussyTile(Vector3 world)
+    public static bool TileIsEmpty(Vector3 world)
     {
         Vector3Int cell = instance.buildGrid.WorldToCell(world);
-        return BussyTile(cell);
+        return TileIsEmpty(cell);
     }
 }
