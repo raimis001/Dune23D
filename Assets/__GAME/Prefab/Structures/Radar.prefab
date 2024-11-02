@@ -12185,8 +12185,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   race: 0
   kind: 8
+  energy: -30
   normal: {fileID: 7275278289700521785}
   wrong: {fileID: 0}
+  placed: 0
   dish: {fileID: 6837586069990187769}
   dishSpeed: 10
 --- !u!1001 &443329899111865119

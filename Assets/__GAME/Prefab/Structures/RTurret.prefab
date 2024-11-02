@@ -209,8 +209,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   race: 1
   kind: 6
+  energy: -30
   normal: {fileID: 2935465723797613181}
   wrong: {fileID: 0}
+  placed: 0
   turret: {fileID: 4897453536308848319}
   barels:
   - {fileID: 8438655028573801678}

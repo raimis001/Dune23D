@@ -123,7 +123,7 @@ public class Build : MonoBehaviour
                 Vector3Int p = new Vector3Int(cell.x + x, cell.y + y);
                 buildingCells.Add(p,kind);
             }
-        Debug.Log("Add building " + kind);
+        //Debug.Log("Add building " + kind);
     }
 
     public static Vector3Int GetCell(Vector3 world)

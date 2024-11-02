@@ -6,6 +6,9 @@ public class Building : Proc
     BuildKind kind;
 
     [SerializeField]
+    int energy = 0;
+
+    [SerializeField]
     GameObject normal;
     [SerializeField]
     GameObject wrong;
@@ -21,6 +24,14 @@ public class Building : Proc
 
         if (placed)
             Build.AddBuilding(transform.position, kind);
+    }
+
+    protected virtual void OnEnable()
+    {
+        if (energy > 0)
+            Energy.Produce += energy;
+        else
+            Energy.Using += Mathf.Abs(energy);
     }
 
     public void SetPlaceType(bool isNormal)

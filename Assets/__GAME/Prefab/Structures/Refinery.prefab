@@ -13966,10 +13966,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   race: 1
-  size: {x: 3, y: 2}
   kind: 4
+  energy: -30
   normal: {fileID: 6889520879237665876}
   wrong: {fileID: 0}
+  placed: 0
   harvesterPoint: {fileID: 9045646591227724027}
 --- !u!1 &6433103895437065898
 GameObject:

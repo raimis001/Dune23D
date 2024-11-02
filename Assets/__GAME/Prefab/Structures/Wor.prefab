@@ -1213,8 +1213,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   race: 0
   kind: 9
+  energy: -20
   normal: {fileID: 4572446385271099858}
   wrong: {fileID: 0}
+  placed: 0
 --- !u!1 &1909728031720537778
 GameObject:
   m_ObjectHideFlags: 0

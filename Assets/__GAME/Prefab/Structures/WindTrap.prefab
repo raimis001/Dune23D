@@ -5654,8 +5654,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   race: 0
   kind: 3
+  energy: 100
   normal: {fileID: 3412788335263432481}
   wrong: {fileID: 0}
+  placed: 0
 --- !u!1 &3173681864372093335
 GameObject:
   m_ObjectHideFlags: 0
