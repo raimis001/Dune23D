@@ -8,15 +8,23 @@ public enum RacesKind
 public class Proc : MonoBehaviour
 {
     public RacesKind race;
+    public float HP = 1000;
+    public float currentHP {  get; private set; }
+    public float currentDamage => currentHP / HP;
     [Space]
 
     protected Vector2 size = Vector2.one;
 
     public Vector3 center => transform.position + new Vector3(0.5f * size.x, 0, 0.5f * size.y);
 
+    protected virtual void Awake()
+    {
+        currentHP = HP;
+    }
+
     public void Damage(float damage)
     {
-
+        currentHP -= damage;
     }
 
     //Kind - 0 any, 1 enemy, 2 friends

@@ -5,8 +5,7 @@ public class Building : Proc
     [SerializeField]
     BuildKind kind;
 
-    [SerializeField]
-    int energy = 0;
+    public int energy = 0;
 
     [SerializeField]
     GameObject normal;
@@ -29,7 +28,7 @@ public class Building : Proc
     protected virtual void OnEnable()
     {
         if (energy > 0)
-            Energy.Produce += energy;
+            Energy.AddProducer(this);
         else
             Energy.Using += Mathf.Abs(energy);
     }
