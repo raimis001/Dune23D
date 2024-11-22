@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 
 public enum BuildKind
 {
-    None, Slab, Slab1, Windtrap, Refinery, Turret, TurretRocket, Construction, Radar, Wor, Silo
+    None, Slab, Slab1, Windtrap, Refinery, Turret, TurretRocket, Construction, Radar, Wor, Silo, Palace
 }
 
 public enum BuildMode

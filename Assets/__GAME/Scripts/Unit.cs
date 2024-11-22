@@ -9,7 +9,7 @@ public class Unit : Proc
     protected int status = 0;
     NavMeshAgent agent;
 
-    private void Awake()
+    void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.isStopped = false;

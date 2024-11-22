@@ -18,7 +18,7 @@ public class BulletRocket : Proc
     Transform parent;
     float timer = 0;
 
-    private void Awake()
+    void Start()
     {
         engine.SetActive(false);
     }
